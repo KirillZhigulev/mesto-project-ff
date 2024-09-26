@@ -1,29 +1,28 @@
 //Функция обработки нажатия на Esc
-
 function escKeyHandler(evt) {
     if (evt.key === "Escape") {
       closeModal(document.querySelector(".popup_is-opened"));
     }
   }
   
-//Функция открытия модального окна
+// Функция открытия модального окна
+export function openPopup(popup) {
+  popup.classList.add("popup_is-opened");
+  popup.classList.add("popup_is-animated");
+  document.addEventListener("keydown", escKeyHandler);
+  popup.addEventListener("mousedown", handleCloseOverlay);
+}
 
-  export function openModal(element) {
-    element.classList.add("popup_is-opened");
-    document.addEventListener("keydown", escKeyHandler);
-  }
- 
-//Функция закрытия модального окна
+// Функция закрытия модального окна
+export function closePopup(popup) {
+  popup.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", escKeyHandler);
+  popup.removeEventListener("mousedown", handleCloseOverlay);
+}
 
-  export function closeModal(element) {
-    element.classList.remove("popup_is-opened");
-    document.removeEventListener("keydown", escKeyHandler);
+// Функция обработчик закрытия модального окна через оверлей
+function handleCloseOverlay(e) {
+  if (e.target === e.currentTarget) {
+    closePopup(e.currentTarget);
   }
-  
-//Функция события клика по оверлею
-
-  export function overlayClick(evt) {
-    if (evt.target === evt.currentTarget) {
-      closeModal(evt.target);
-    }
-  }
+}
