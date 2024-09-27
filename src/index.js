@@ -121,7 +121,7 @@ function editAvatar(e) {
 }
 
 // Функция добавления значения в инпуты модального окна новой карточки
-function addNewCardSubmit(e,) {
+function addNewCardSubmit(e) {
   e.preventDefault();
   renderLoading(true, btnSubmitAddNewCard);
 
@@ -135,7 +135,6 @@ function addNewCardSubmit(e,) {
         openImage,
         userId,
         cardId,
-        item._id
       );
       addNewCard(newCard, true);
       addCardForm.reset();
