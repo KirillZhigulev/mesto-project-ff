@@ -1,4 +1,6 @@
-export const initialCards = [
+//Убрал экспорт, массив оставил(хотя можно и удалить)
+
+const initialCards = [
     {
       name: "Архыз",
       link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
